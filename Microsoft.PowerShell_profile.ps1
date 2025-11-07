@@ -43,7 +43,9 @@ function ColorizeErrors {
     )
 
     process {
-        if ($InputObject -match '(?i): error ') {
+        if ($InputObject -match '(?i): fatal error ') {
+            Write-Host $InputObject -ForegroundColor DarkRed
+        } elseif ($InputObject -match '(?i): error ') {
             Write-Host $InputObject -ForegroundColor Red
         } elseif ($InputObject -match '(?i): warning ') {
             Write-Host $InputObject -ForegroundColor Yellow
